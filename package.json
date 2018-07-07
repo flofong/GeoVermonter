@@ -1,0 +1,19 @@
+{
+  "name": "geo-guesser",
+  "version": "1.0.0",
+  "description": "A geographic guessing game",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BurlingtonCodeAcademy/geo-guesser.git"
+  },
+  "author": "Joshua Burke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BurlingtonCodeAcademy/geo-guesser/issues"
+  },
+  "homepage": "https://github.com/BurlingtonCodeAcademy/geo-guesser#readme"
+}
