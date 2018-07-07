@@ -1,4 +1,6 @@
+var fs = require('fs');
 var http = require('http');
+var mime = require('mime-types');
 
 var port = process.env.PORT || 5000;
 http.createServer(function (request, response) {
@@ -27,7 +29,6 @@ http.createServer(function (request, response) {
   } catch (error) {
     console.log(error);
 
-    // todo: confirm this is a file not found error
     data = "Error: " + error.toString();
     response.statusCode = 404;
   }
