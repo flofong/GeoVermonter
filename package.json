@@ -4,6 +4,7 @@
   "description": "A geographic guessing game in Vermont",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "cypress run"
   },
   "repository": {
