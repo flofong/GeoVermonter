@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/BurlingtonCodeAcademy/geo-vermonter/issues"
   },
-  "homepage": "https://github.com/BurlingtonCodeAcademy/geo-vermonter#readme"
+  "homepage": "https://github.com/BurlingtonCodeAcademy/geo-vermonter#readme",
+  "devDependencies": {
+    "cypress": "^3.0.2"
+  }
 }
