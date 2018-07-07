@@ -1,19 +1,19 @@
 {
-  "name": "geo-guesser",
+  "name": "geo-vermonter",
   "version": "1.0.0",
-  "description": "A geographic guessing game",
+  "description": "A geographic guessing game in Vermont",
   "main": "index.js",
   "scripts": {
     "test": "cypress run"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BurlingtonCodeAcademy/geo-guesser.git"
+    "url": "git@github.com:BurlingtonCodeAcademy/geo-vermonter.git"
   },
   "author": "Joshua Burke",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BurlingtonCodeAcademy/geo-guesser/issues"
+    "url": "https://github.com/BurlingtonCodeAcademy/geo-vermonter/issues"
   },
-  "homepage": "https://github.com/BurlingtonCodeAcademy/geo-guesser#readme"
+  "homepage": "https://github.com/BurlingtonCodeAcademy/geo-vermonter#readme"
 }
