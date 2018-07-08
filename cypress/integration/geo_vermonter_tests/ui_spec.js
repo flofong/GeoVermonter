@@ -6,7 +6,7 @@ describe('Smoke Test', function () {
 
 describe('Page Navigation', function () {
   it('Should have a map container', function () {
-    cy.visit('http://localhost:5000/');
+    cy.visit('/');
     cy.get('#map');
   });
 });
