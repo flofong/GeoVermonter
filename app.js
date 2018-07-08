@@ -7,4 +7,6 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
   }).addTo(mymap);
 
-L.geoJSON(data).addTo(mymap);
+let vermont_border = L.geoJSON(border_data);
+vermont_border.addTo(mymap);
+
