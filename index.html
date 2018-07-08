@@ -10,16 +10,25 @@
        width: 400px;
      }
 
+     .spacer {
+       height: 20px;
+     }
+
      #container {
        display: flex;
-       justify-content: space-around;
+       flex-direction: column;
+       justify-content: space-between;
+       align-items: center;
      }
     </style>
   </head>
   <body>
     <div id="container">
       <div id="map"></div>
+      <div class="map spacer"></div>
+      <button id="new-game">Play New Game</button>
     </div>
+    <script type="text/javascript" src="border.js"></script>
     <script src="app.js"> </script>
   </body>
 </html>
