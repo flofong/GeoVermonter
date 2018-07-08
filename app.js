@@ -10,3 +10,17 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
 let vermont_border = L.geoJSON(border_data);
 vermont_border.addTo(mymap);
 
+let boundingBox = {
+  maxLon: -73.3654,
+  minLon: -71.5489,
+  maxLat: 45.0065,
+  minLat: 42.7395
+};
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomPointWithinVermont () {
+
+}
