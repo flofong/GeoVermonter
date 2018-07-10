@@ -4,9 +4,20 @@ describe('Smoke Test', function () {
   });
 });
 
-describe('Page Navigation', function () {
-  it('Should have a map container', function () {
-    cy.visit('/');
-    cy.get('#map');
-  });
+describe('Page Element Existence', function () {
+  before(()=> cy.visit('/'));
+
+  ['#map', 'nav', 
+   '#info', '#info latitude', '#info longitude',
+   '#info county', '#info town',
+   '#score'
+  ].forEach((selector)=> {
+    it('Should have a ' + selector + ' element', function () {
+      cy.get(selector); // this will fail if the given element is missing
+    });
+  })
+});
+
+describe('Contents of Info Fields', ()=> {
+
 });
