@@ -1,23 +1,46 @@
+
 describe('Smoke Test', function () {
   it('Just checks if tests run', function () {
     expect(true).to.equal(true);
   });
 });
 
-describe('Page Element Existence', function () {
-  before(()=> cy.visit('/'));
+describe('On initial page load', function () {
+  before(() => cy.visit('/'));
 
-  ['#map', 'nav', 
-   '#info', '#info latitude', '#info longitude',
-   '#info county', '#info town',
-   '#score'
-  ].forEach((selector)=> {
-    it('Should have a ' + selector + ' element', function () {
-      cy.get(selector); // this will fail if the given element is missing
+  it('the basic page elements should exist', function () {
+    ['#map', 'nav',
+      '#info', '#info latitude', '#info longitude',
+      '#info county', '#info town',
+      '#score',
+      'button#start', 'button#guess', 'button#quit'
+    ].forEach((selector) => {
+      it('Should have a ' + selector + ' element', function () {
+        cy.get(selector); // this will fail if the given element is missing
+      });
     });
-  })
+  });
 });
 
-describe('Contents of Info Fields', ()=> {
+describe('After clicking start', () => {
+  before(() => {
+    cy.visit('/');
+    cy.get('button#start').click();
+  });
 
+  it('the Start button should be disabled', () => {
+    cy.get('button#start').should('be.disabled');
+  });
+
+  describe('the info fields', () => {
+    ['#info latitude', '#info longitude',
+      '#info county', '#info town',
+    ].forEach((selector) => {
+      it(selector + ' element should contain a question mark', function () {
+        cy.get(selector).then((element) => {
+          assert.equal('?', element.text());
+        });
+      });
+    });
+  });
 });
