@@ -10,8 +10,8 @@ describe('On initial page load', function () {
 
   it('the basic page elements should exist', function () {
     ['#map', 'nav',
-      '#info', '#info latitude', '#info longitude',
-      '#info county', '#info town',
+      '#info', '#info #latitude', '#info #longitude',
+      '#info #county', '#info #town',
       '#score',
       'button#start', 'button#guess', 'button#quit'
     ].forEach((selector) => {
@@ -32,9 +32,17 @@ describe('After clicking start', () => {
     cy.get('button#start').should('be.disabled');
   });
 
+  it('the Quit button should be enabled', () => {
+    cy.get('button#quit').should('be.enabled');
+  });
+
+  it('the Guess button should be enabled', () => {
+    cy.get('button#guess').should('be.enabled');
+  });
+
   describe('the info fields', () => {
-    ['#info latitude', '#info longitude',
-      '#info county', '#info town',
+    ['#info #latitude', '#info #longitude',
+      '#info #county', '#info #town',
     ].forEach((selector) => {
       it(selector + ' element should contain a question mark', function () {
         cy.get(selector).then((element) => {
