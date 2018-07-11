@@ -101,15 +101,13 @@
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     }).addTo(map);
-    L.marker([43.77109, -72.77417]).addTo(map)
-    // .bindPopup()
-    // .openPopup();
+    
 
     // Adds border around Vermont
     let border = L.geoJSON(border_data)
     border.addTo(map);
 
-    // Finds a random location within the VT border
+    // Finds a random location within the borderBox
     let boundingBox = {
         maxLon: -73.3654,
         minLon: -71.5489,
@@ -117,8 +115,12 @@
         minLat: 42.7395
     }
 
-    let randomLon = (boundingBox.maxLon - boundingBox.minLon) + boundingBox.minLon;
-    let randomLat = (boundingBox.maxLat - boundingBox.minLat) + boundingBox.minLat;
+    let differenceLon = (boundingBox.maxLon - boundingBox.minLon)
+    let differenceLat = (boundingBox.maxLat - boundingBox.minLat)
+
+    let randomLon = Math.random(0, differenceLon) + boundingBox.minLon;
+    let randomLat = Math.random(0, differenceLat) + boundingBox.minLat;
+    L.marker ([randomLat, randomLon]).addTo(map);
 
     let layer = L.geoJson(border_data);
     let results = leafletPip.pointInLayer([randomLon, randomLat], layer);
