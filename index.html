@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -16,6 +17,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous">
         </script>
+
+    <script src="border.js"></script>
+
+
 </head>
 
 <body>
@@ -91,16 +96,33 @@
         quitButton.enabled = true
     }
 
-
-
-
-    var map = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    // Makes map world imagery view
+    var map = L.map('map').setView([43.77109, -72.77417], 7);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     }).addTo(map);
-    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup()
-        .openPopup();
+    L.marker([43.77109, -72.77417]).addTo(map)
+    // .bindPopup()
+    // .openPopup();
+
+    // Adds border around Vermont
+    let border = L.geoJSON(border_data)
+    border.addTo(map);
+
+    // Finds a random location within the VT border
+    let boundingBox = {
+        maxLon: -73.3654,
+        minLon: -71.5489,
+        maxLat: 45.0065,
+        minLat: 42.7395
+    }
+
+    let randomLon = (boundingBox.maxLon - boundingBox.minLon) + boundingBox.minLon;
+    let randomLat = (boundingBox.maxLat - boundingBox.minLat) + boundingBox.minLat;
+
+    let layer = L.geoJson(border_data);
+    let results = leafletPip.pointInLayer([randomLon, randomLat], layer);
+
 </script>
 
 </html>
