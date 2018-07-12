@@ -50,6 +50,9 @@ let lonPoint = (boundingBox.maxLon - boundingBox.minLon)
 let latPoint = (boundingBox.maxLat - boundingBox.minLat)
 let randomLonPoint = Math.random() * lonPoint + boundingBox.minLon
 let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
+
+map.dragging.disable();
+map.doubleClickZoom.disable();
     
 function startTheGame() {
   
@@ -80,4 +83,5 @@ function isPointInPolygon(lon, lat) {
 
 function iGiveUp() {
 document.getElementById('quit').innerHTML = ([randomLonPoint, randomLatPoint])
+setup()
 }
