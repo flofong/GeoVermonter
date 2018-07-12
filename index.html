@@ -47,13 +47,36 @@
 
 
     <!-- MAP -->
-    <!-- <div class="row"> -->
-    <div class="jumbotron">
-        <div style="height:500px;" id="map" map="map"></div>
-    </div>
+<div class="mapcontainer">
+    <div class="jumbotron" style="height:500px;" id="map" map="map">  
+        <h1>
+            Welcome to GeoVermont!
+        </h1>
+        <p>
+            A game that tests your true knowledge of the land you live on. In this game, 
+        </p>
+    
+    <!-- <div class="col-sm-12 zrow">
+            <button id='north'>north</button>
+            <button id='east'>east</button>
+            <button id='south'>south</button>
+            <button id='west'>west</button>
+    </div> -->
+</div>
+</div>
+<br>
     <!-- RIGHT DIV -->
-
-    <div class="col-sm-12">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <div class="actionbuttons">
+                    <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
+                    <button id="guess" class="btn btn-primary mx-5">Guess</button>
+                    <button id="quit" onClick="iGiveUp()" class="btn btn-danger">RAGE QUIT</button>
+                </div>
+            </div>
+        </div>
+    
+    <div class="col-sm-12 zrow">
         <button id='north'>north</button>
         <button id='east'>east</button>
         <button id='south'>south</button>
@@ -72,15 +95,7 @@
         </div>
 
 
-        <div class="row text-center">
-            <div class="col-sm-12">
-                <div class="actionbuttons">
-                    <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
-                    <button id="guess" class="btn btn-primary mx-5">Guess</button>
-                    <button id="quit" onClick="iGiveUp()" class="btn btn-danger">RAGE QUIT</button>
-                </div>
-            </div>
-        </div>
+       
 
     </div>
     </div>
