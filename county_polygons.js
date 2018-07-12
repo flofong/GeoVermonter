@@ -1,4 +1,4 @@
-let count_polygons = 
+let county_polygons = 
 
 {
     "type": "FeatureCollection",
