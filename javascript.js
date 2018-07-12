@@ -67,7 +67,7 @@ map.zoomControl.disable();
 map.scrollWheelZoom.disable();
 
 function startTheGame() {
-    // adds a random marker and sets the zoom view
+    // looks for a random marker in the polygon and sets the zoom view
     if (isPointInPolygon(randomLonPoint, randomLatPoint) === 1) {
         L.marker([randomLatPoint, randomLonPoint]).addTo(map)
         map.setView([randomLatPoint, randomLonPoint], 18)
