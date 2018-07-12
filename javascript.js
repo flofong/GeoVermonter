@@ -83,5 +83,4 @@ function isPointInPolygon(lon, lat) {
 
 function iGiveUp() {
 document.getElementById('quit').innerHTML = ([randomLonPoint, randomLatPoint])
-setup()
 }
