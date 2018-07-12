@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="Geo.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
@@ -19,70 +19,69 @@
         </script>
 
     <script src="border.js"></script>
-    
+
 
 
 </head>
 
 <body>
     <!-- NAVBAR -->
-    <div class="container-fluid">
+
+    <div class="container">
         <div class="row">
-            <div class="nav navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">GeoVermonter</a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">High Score
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
+            <nav class="nav navbar-expand-sm navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    About
+                </a>
+                <span class="mb-0 h1">
+                    GeoVermont
+                </span>
+                <a class="navbar-brand"href="#">
+                    High Score
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- MAP -->
+    <!-- <div class="row"> -->
+    <div class="jumbotron">
+        <div style="height:500px;" id="map" map="map"></div>
+    </div>
+    <!-- RIGHT DIV -->
+
+    <div class="col-sm-12">
+        <button id='north'>north</button>
+        <button id='east'>east</button>
+        <button id='south'>south</button>
+        <button id='west'>west</button>
+
+        <div id="info">
+            <p id="latitude">Latitude</p>
+            <p id="longitude">Longitude</p>
+            <p id="county">County</p>
+            <p id="town">Town</p>
+        </div>
+
+        <div class="score">
+            <p>Score Box</p>
+        </div>
+
+
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <div class="actionbuttons">
+                    <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
+                    <button id="guess" class="btn btn-primary mx-5">Guess</button>
+                    <button id="giveUp" class="btn btn-danger">RAGE QUIT</button>
                 </div>
             </div>
         </div>
 
-
-        <!-- MAP -->
-        <div class="row">
-            <div class="col-lg-5">
-                <div style="height:500px;" id="map" map="map"></div>
-            </div>
-        </div>
-        <div class="col-lg-2">
-            <button id='north'>north</button>
-            <button id='east'>east</button>
-            <button id='south'>south</button>
-            <button id='west'>west</button>
-        </div>
-        <!-- RIGHT DIV -->
-
-        <div class="col-lg-5">
-            <!-- info -->
-            <div id="info">
-                <p id="latitude">?</p>
-                <p id="longitude">?</p>
-                <p id="county">?</p>
-                <p id="town">?</p>
-            </div>
-            <!-- score -->
-
-            <div class="score">
-                <p>Score Box</p>
-            </div>
-            <!-- buttons -->
-
-            <div class="buttons">
-                <button id="start" onClick="setup(), startTheGame()">start</button>
-                <button id="guess">guess</button>
-                <button id="quit">quit</button>
-            </div>
-        </div>
     </div>
-
+    </div>
+    </div>
 
 
 </body>
