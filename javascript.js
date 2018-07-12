@@ -4,10 +4,27 @@
     let startButton = document.getElementById("start")
     let guessButton = document.getElementById("guess")
     let quitButton = document.getElementById("quit")
+
+    //on page load, start is enabled and quit and guess are disabled
+    $(document).ready(function(){ 
+        $("#quit").prop("disabled",true); 
+     });
+     $(document).ready(function(){ 
+        $("#guess").prop("disabled",true); 
+     });
+
+     //when start is clicked, this function is called and guess and quit buttons are enabled
     function setup() {
-        startButton.disabled = true
-        guessButton.enabled = true
-        quitButton.enabled = true
+        $(document).ready(function(){ 
+            $("#start").prop("disabled",true); 
+         });
+         $(document).ready(function(){ 
+            $("#guess").prop("disabled",false); 
+         });
+         $(document).ready(function(){ 
+            $("#quit").prop("disabled",false); 
+         });
+       
     }
 
     // Makes map world imagery view
@@ -38,7 +55,19 @@
     map.setView([randomLatPoint,randomLonPoint], 18)
     map.setMinZoom(18);
     map.setMaxZoom(18);
+    
+    function isPointInPolygon(){
+        let layer = L.geoJson(border);
+        let results = leafletPip.pointInLayer([randomLonPoint, randomLatPoint], layer);
+        if (results = false) {
+            startTheGame();
+        }
+        
+        }
+        
+    
 
-}
+    }
+
 
 
