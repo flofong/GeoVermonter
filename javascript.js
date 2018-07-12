@@ -64,7 +64,6 @@ function startTheGame() {
         map.setView([randomLatPoint, randomLonPoint], 16)
         map.setMinZoom(18);
         map.setMaxZoom(18);
-        console.log([randomLonPoint, randomLatPoint])
     } else {
         startTheGame()
     }
@@ -82,5 +81,8 @@ function isPointInPolygon(lon, lat) {
 
 
 function iGiveUp() {
-document.getElementById('quit').innerHTML = ([randomLonPoint, randomLatPoint])
+document.getElementById('quit').innerHTML = "This was your location " + ([randomLonPoint, randomLatPoint])
 }
+
+let vermontcounties = L.geoJSON(county_data)
+x
