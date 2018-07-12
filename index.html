@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="/border.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+</head>
+<style>
+    #map {
+        height: 400px;
+    }
+</style>
+<html>
+<h1>geo vermonter</h1>
+<main>
+    <div>nav here</div>
+    <div style="height:500px;" id="map">map here</div>
+    <div>info - side of page, contains fields for latitude, long, county, town - read-only text fields</div>
+    <div>score here</div>
+
+
+    <div>
+        <button id="start" onClick="setup(), startTheGame()">start</button>
+        <button id="guess">guess</button>
+        <button id="quit">quit</button>
+    </div>
+
+
+    <body>
+    </body>
+</main>
+<script>
+    var map = L.map('map').setView([43.77109, -72.77417], 7);
+
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(map);
+
+    // L.marker([43.77109, -72.77417]).addTo(map)
+    // .bindPopup()
+    // .openPopup();
+
+    let startButton = document.getElementById("start")
+    let guessButton = document.getElementById("guess")
+    let quitButton = document.getElementById("quit")
+    function setup() {
+        startButton.disabled = true
+        guessButton.enabled = true
+        quitButton.enabled = true
+    }
+
+    let borderOfVt = L.geoJSON(border_data);
+    borderOfVt.addTo(map);
+    let boundingBox = {
+        maxLon: -73.3654,
+        minLon: -71.5489,
+        maxLat: 45.0065,
+        minLat: 42.7395
+    };
+    function startTheGame() {
+    let lonPoint = (boundingBox.maxLon - boundingBox.minLon)
+    let latPoint = (boundingBox.maxLat - boundingBox.minLat)
+    // L.marker([lonPoint, latPoint]).addTo(map)
+
+    let randomLonPoint = Math.random() * lonPoint + boundingBox.minLon
+    let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
+    L.marker([randomLatPoint, randomLonPoint]).addTo(map)
+    map.setView([randomLatPoint,randomLonPoint], 18)
+
+   
+}
+    // function randomPointOnMap() {
+    //     return Math.floor(Math.random() * (latPoint - lonPoint + 1) + lonPoint);
+    // }
+    // randomPointOnMap.addTo(map);
+
+</script>
+
+</html>
