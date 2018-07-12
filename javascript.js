@@ -39,6 +39,10 @@ let border = L.geoJSON(border_data)
 border.addTo(map);
 border.setStyle({fillColor:"none"})
 
+let vermontCounties = L.geoJson(county_polygons)
+vermontCounties.addTo(map);
+vermontCounties.setStyle({fillColor:"none"})
+
 // Finds a random location within the borderBox
 let boundingBox = {
     maxLon: -73.3654,
@@ -50,6 +54,9 @@ let lonPoint = (boundingBox.maxLon - boundingBox.minLon)
 let latPoint = (boundingBox.maxLat - boundingBox.minLat)
 let randomLonPoint = Math.random() * lonPoint + boundingBox.minLon
 let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
+
+map.dragging.disable();
+map.doubleClickZoom.disable();
     
 function startTheGame() {
   
@@ -61,7 +68,6 @@ function startTheGame() {
         map.setView([randomLatPoint, randomLonPoint], 16)
         map.setMinZoom(18);
         map.setMaxZoom(18);
-        console.log([randomLonPoint, randomLatPoint])
     } else {
         startTheGame()
     }
@@ -79,5 +85,6 @@ function isPointInPolygon(lon, lat) {
 
 
 function iGiveUp() {
-document.getElementById('quit').innerHTML = ([randomLonPoint, randomLatPoint])
+document.getElementById('quit').innerHTML = "This was your location " + ([randomLonPoint, randomLatPoint])
 }
+

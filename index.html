@@ -19,6 +19,7 @@
         </script>
 
     <script src="border.js"></script>
+    <script src="county_polygons.js"></script>
 
 
 
@@ -63,6 +64,7 @@
             <p id="longitude">Longitude</p>
             <p id="county">County</p>
             <p id="town">Town</p>
+            <p id="quit"></p>
         </div>
 
         <div class="score">
@@ -75,7 +77,7 @@
                 <div class="actionbuttons">
                     <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
                     <button id="guess" class="btn btn-primary mx-5">Guess</button>
-                    <button id="giveUp" class="btn btn-danger">RAGE QUIT</button>
+                    <button id="quit" onClick="iGiveUp()" class="btn btn-danger">RAGE QUIT</button>
                 </div>
             </div>
         </div>
