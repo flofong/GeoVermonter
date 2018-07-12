@@ -64,6 +64,7 @@ let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
 map.dragging.disable();
 map.doubleClickZoom.disable();
 map.zoomControl.disable();
+map.scrollWheelZoom.disable();
 
 function startTheGame() {
     // adds a random marker and sets the zoom view
