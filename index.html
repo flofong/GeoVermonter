@@ -94,6 +94,7 @@
         startButton.disabled = true
         guessButton.enabled = true
         quitButton.enabled = true
+        map.scrollWheelZoom = false;
     }
 
     // Makes map world imagery view
@@ -122,7 +123,8 @@
     let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
     L.marker([randomLatPoint, randomLonPoint]).addTo(map)
     map.setView([randomLatPoint,randomLonPoint], 18)
-
+    map.setMaxZoom(18);
+    map.setMinZoom(18);
 }
 
 
