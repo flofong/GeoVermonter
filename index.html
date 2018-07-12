@@ -36,10 +36,6 @@
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     }).addTo(map);
 
-    // L.marker([43.77109, -72.77417]).addTo(map)
-    // .bindPopup()
-    // .openPopup();
-
     let startButton = document.getElementById("start")
     let guessButton = document.getElementById("guess")
     let quitButton = document.getElementById("quit")
@@ -60,19 +56,14 @@
     function startTheGame() {
     let lonPoint = (boundingBox.maxLon - boundingBox.minLon)
     let latPoint = (boundingBox.maxLat - boundingBox.minLat)
-    // L.marker([lonPoint, latPoint]).addTo(map)
 
     let randomLonPoint = Math.random() * lonPoint + boundingBox.minLon
     let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
     L.marker([randomLatPoint, randomLonPoint]).addTo(map)
     map.setView([randomLatPoint,randomLonPoint], 18)
 
-   
 }
-    // function randomPointOnMap() {
-    //     return Math.floor(Math.random() * (latPoint - lonPoint + 1) + lonPoint);
-    // }
-    // randomPointOnMap.addTo(map);
+
 
 </script>
 
