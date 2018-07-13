@@ -35,8 +35,7 @@
                     About
                 </a>
                 <span class="mb-0 h1">
-                    <img src="binoculars_3.svg" width="40" height="40">
-                    GeoVermont
+                    <img src="binoculars_3.svg" width="40" height="40"> GeoVermont
                 </span>
                 <a class="navbar-brand" href="#">
                     High Score
@@ -47,57 +46,79 @@
 
 
     <!-- MAP -->
-<div class="mapcontainer">
-    <div class="jumbotron" style="height:500px;" id="map" map="map">  
-        <h1>
-            Welcome to GeoVermont!
-        </h1>
-        <p>
-            A game that tests your true knowledge of the land you live on. In this game, 
-        </p>
-    
-    <!-- <div class="col-sm-12 zrow">
-            <button id='north'>north</button>
-            <button id='east'>east</button>
-            <button id='south'>south</button>
-            <button id='west'>west</button>
-    </div> -->
-</div>
-</div>
-<br>
-    <!-- RIGHT DIV -->
-        <div class="row text-center">
-            <div class="col-sm-12">
-                <div class="actionbuttons">
-                    <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
-                    <button id="guess" class="btn btn-primary mx-5">Guess</button>
-                    <button id="quit" onClick="iGiveUp()" class="btn btn-danger">RAGE QUIT</button>
+    <div class="mapcontainer">
+
+        <div class="jumbotron" style="height:500px;" id="map" map="map">
+            <div class="col-sm-12 zrow">
+                <div id="north">
+                    <a>
+                        <img src="https://unitronicsplc.com/wp-content/uploads/intense-cache/icons/plugin/font-awesome/arrow-circle-up.svg"
+                        width="50px" height="50px">
+                    </a>
+                </div>
+                <div id="eastwest">
+                    <a id="eastArrow">
+                        <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/arrow-button-navigation-circle-left-3269d2f93f81795e-512x512.png"
+                        width="50px" height="50px">
+                    </a>
+                    <a id="westArrow">
+                        <img src="https://www.shareicon.net/download/2016/11/14/852060_right.svg" height="50px" width="50px">
+                    </a>
+                </div>
+            
+                <div id="south">
+                    <a id="south">
+                        <img src="https://unitronicsplc.com/wp-content/uploads/intense-cache/icons/plugin/font-awesome/arrow-circle-down.svg" height="50px"
+                        width="50px">
+                    </a>
                 </div>
             </div>
         </div>
-    
-    <div class="col-sm-12 zrow">
-        <button id='north'>north</button>
-        <button id='east'>east</button>
-        <button id='south'>south</button>
-        <button id='west'>west</button>
-
-        <div id="info">
-            <p id="latitude">Latitude</p>
-            <p id="longitude">Longitude</p>
-            <p id="county">County</p>
-            <p id="town">Town</p>
-            <p id="quit"></p>
-        </div>
-
-        <div class="score">
-            <p>Score Box</p>
-        </div>
-
-
        
-
     </div>
+    
+    
+    <h1>
+        Welcome to GeoVermont!
+    </h1>
+    <p>
+        A game that tests your knowledge of the land in which you live. Are you good at geography? Do you own a drone and obsessivly
+        fly it in secret while filming the behavioral patterns of deer? This game is for you. Guess the county you are in!
+    </p>
+
+
+
+    
+    <br>
+    <!-- RIGHT DIV -->
+    <div class="row text-center">
+        <div class="col-sm-12">
+            <div class="actionbuttons">
+                <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
+                <button id="guess" class="btn btn-primary mx-5">Guess</button>
+                <button id="quit" onClick="iGiveUp()" class="btn btn-danger">RAGE QUIT</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="info">
+        <p id="latitude">Latitude</p>
+        <p id="longitude">Longitude</p>
+        <p id="county">County</p>
+        <p id="town">Town</p>
+        <p id="quit"></p>
+    </div>
+
+    <div class="score">
+        <p>Score Box</p>
+    </div>
+
+
+
+
+
     </div>
     </div>
 
