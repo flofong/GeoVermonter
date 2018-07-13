@@ -4,6 +4,11 @@
 let startButton = document.getElementById("start")
 let guessButton = document.getElementById("guess")
 let quitButton = document.getElementById("quit")
+let randomLatPoint
+let randomLonPoint
+let randomPoint
+let apiUrl
+let countyAddress
 
 //on page load, start is enabled and quit and guess are disabled
 $(document).ready(function () {
@@ -26,6 +31,7 @@ function setup() {
         $("#quit").prop("disabled", false);
     });
     
+    findCountyName()
 }
 
 // Makes map world imagery view
@@ -58,8 +64,7 @@ let boundingBox = {
 };
 let lonPoint = (boundingBox.maxLon - boundingBox.minLon)
 let latPoint = (boundingBox.maxLat - boundingBox.minLat)
-let randomLonPoint = Math.random() * lonPoint + boundingBox.minLon
-let randomLatPoint = Math.random() * latPoint + boundingBox.minLat
+
 
 map.dragging.disable();
 map.doubleClickZoom.disable();
@@ -67,6 +72,8 @@ map.zoomControl.disable();
 map.scrollWheelZoom.disable();
 
 function startTheGame() {
+    randomLonPoint = Math.random() * lonPoint + boundingBox.minLon
+    randomLatPoint = Math.random() * latPoint + boundingBox.minLat
     // looks for a random marker in the polygon and sets the zoom view
     if (isPointInPolygon(randomLonPoint, randomLatPoint) === 1) {
         L.marker([randomLatPoint, randomLonPoint]).addTo(map)
@@ -80,21 +87,48 @@ function startTheGame() {
 
 }
 
+let loops = 0;
 
 function isPointInPolygon(lon, lat) {
-    // console.log("checking ", [lon, lat])
-    let layer = L.geoJson(border_data);
-    let results = leafletPip.pointInLayer([lon, lat], layer);
+    console.log({loops})
+    console.log("checking ", [lon, lat])
+    let results = leafletPip.pointInLayer([lon, lat], border);
+    loops += 1;
     return results.length;
 }
 
 
 
 function iGiveUp() {
-    document.getElementById('quit').innerHTML = "This was your location " + ([randomLonPoint, randomLatPoint])
+    document.getElementById('quit').innerHTML = "This was your location: " + ([randomLonPoint, randomLatPoint])
+    findCountyName()
 }
-//disable Zoom on page load
-// function disableZoom(){
-//     map.setMinZoom(7);
-//     map.setMaxZoom(7);
-// }
+
+
+let countyNameList = ["Addison County", "Bennington County", "Caledonia County", "Chittenden County", "Essex County", "Franklin County", "Grand Isle County", "Lamoille County", "Orange County", "Orleans County", "Rutland County", "Washington County", "Windham County", "Windsor County"]
+
+
+function findCountyName(){
+    startTheGame()
+randomPoint = (randomLatPoint + "," + randomLonPoint)
+apiUrl = "https://nominatim.openstreetmap.org/search?q=" + randomPoint + "&format=json"
+
+        fetch(apiUrl).then(function(response){
+          return response.json()
+        
+        }).then(function(myJSON){
+            countyAddress = myJSON[0].display_name
+            for (var i=0; i < countyNameList.length; i++) { 
+                if (countyAddress.includes(countyNameList[i])){
+                    document.getElementById ('county').innerHTML = countyNameList[i]
+                }else{
+                    console.log(countyNameList[i])
+                }
+
+              }
+
+
+        })
+        
+    }
+  
