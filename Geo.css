@@ -1,26 +1,18 @@
 
-
-/* 
-#info {
-    border: solid black 2px;
-}
- 
-.score {
-    border: solid black 1px;
-} */
  .zrow {
     z-index: 1000;
 } 
 
-/* #mapcontainer {
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column; */
-    
+#northArrow{
+    margin-left:27px;
 }
 
+#southArrow{
+    margin-left:27px;
+}
 
-
+#idizzle{
+    border-radius:20px;
+}
 
 

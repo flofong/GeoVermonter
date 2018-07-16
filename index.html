@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="Geo.css">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
@@ -11,13 +11,12 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous">
-        </script>
-
+        </script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Geo.css">
     <script src="border.js"></script>
     <script src="county_polygons.js"></script>
 
@@ -51,33 +50,74 @@
         <div class="jumbotron" style="height:500px;" id="map" map="map">
             <div class="col-sm-12 zrow">
                 <div id="north">
-                    <a>
-                        <img src="https://unitronicsplc.com/wp-content/uploads/intense-cache/icons/plugin/font-awesome/arrow-circle-up.svg"
-                        width="50px" height="50px">
+                    <a id="northArrow">
+                        <img onClick="moveNorth()" style="cursor:pointer" src="northArrow.png" width="50px" height="50px">
                     </a>
                 </div>
                 <div id="eastwest">
-                    <a id="eastArrow">
-                        <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/arrow-button-navigation-circle-left-3269d2f93f81795e-512x512.png"
-                        width="50px" height="50px">
-                    </a>
                     <a id="westArrow">
-                        <img src="https://www.shareicon.net/download/2016/11/14/852060_right.svg" height="50px" width="50px">
+                        <img onClick="moveWest()" style="cursor:pointer" src="westArrow.png" height="50px" width="50px">
+                    </a>
+                    <a id="eastArrow">
+                        <img onClick="moveEast()" style="cursor:pointer" src="eastArrow.png" width="50px" height="50px">
+                    </a>
+
+                </div>
+
+                <div id="south">
+                    <a id="southArrow">
+                        <img onClick="moveSouth()" style="cursor:pointer" src="southArrow.png" height="50px" width="50px">
                     </a>
                 </div>
-            
-                <div id="south">
-                    <a id="south">
-                        <img src="https://unitronicsplc.com/wp-content/uploads/intense-cache/icons/plugin/font-awesome/arrow-circle-down.svg" height="50px"
-                        width="50px">
-                    </a>
+                <div id="countyMap">
+                    <img id="idizzle" src="Counties.JPG" width=18% height=18%>
                 </div>
             </div>
         </div>
-       
+
     </div>
-    
-    
+
+    <!-- RIGHT DIV -->
+    <div class="row text-center">
+        <div class="col-sm-12">
+            <div class="actionbuttons">
+                <button id="start" class="btn btn-success" onClick="startTheGame()">Start</button>
+                <button id="guess" type="button" class="btn btn-primary mx-5" data-toggle="modal" data-target="#guessModal"> Guess </button>
+
+
+<div class="modal fade" id="guessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="guessModalLabel">What county are you in?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              County Options
+                                            </button>
+                                            <div id="countyList" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                              <!-- <a class="dropdown-item" href="#">Action</a> -->
+                                          
+                                            </div>
+                                          </div>                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                <button id="quit" onClick="iGiveUp() " class="btn btn-danger ">RAGE QUIT</button>
+            </div>
+        </div>
+    </div>
     <h1>
         Welcome to GeoVermont!
     </h1>
@@ -90,28 +130,18 @@
 
     
     <br>
-    <!-- RIGHT DIV -->
-    <div class="row text-center">
-        <div class="col-sm-12">
-            <div class="actionbuttons">
-                <button id="start" class="btn btn-success" onClick="setup(), startTheGame()">Start</button>
-                <button id="guess" class="btn btn-primary mx-5">Guess</button>
-                <button id="quit" onClick="iGiveUp()" class="btn btn-danger">RAGE QUIT</button>
-            </div>
-        </div>
-    </div>
+   
 
 
 
-    <div id="info">
+    <div id="info ">
         <p id="latitude">Latitude</p>
         <p id="longitude">Longitude</p>
         <p id="county">County</p>
-        <p id="town">Town</p>
-        <p id="quit"></p>
+        <p id="printLatLon"></p>
     </div>
 
-    <div class="score">
+    <div class="score ">
         <p>Score Box</p>
     </div>
 
@@ -125,6 +155,6 @@
 
 </body>
 
-<script src="javascript.js"></script>
+<script src="javascript.js "></script>
 
 </html>
