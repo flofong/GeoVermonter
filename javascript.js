@@ -1,18 +1,22 @@
 "use strict";
 
 //global variables
-let startButton = document.getElementById("start")
-let guessButton = document.getElementById("guess")
-let quitButton = document.getElementById("quit")
+// let startButton = document.getElementById("start")
+// let guessButton = document.getElementById("guess")
+// let quitButton = document.getElementById("quit")
+
 let randomLatPoint
 let randomLonPoint
 let randomPoint
-let apiUrl
-let countyAddress
+
 let currentLatPoint
 let currentLonPoint
+
+let countyAddress
 let correctCounty
-let countyNameList = ["Addison County", "Bennington County", "Caledonia County", "Chittenden County", "Essex County", "Franklin County", "Grand Isle County", "Lamoille County", "Orange County", "Orleans County", "Rutland County", "Washington County", "Windham County", "Windsor County"]
+const countyNameList = ["Addison County", "Bennington County", "Caledonia County", "Chittenden County", "Essex County", "Franklin County", "Grand Isle County", "Lamoille County", "Orange County", "Orleans County", "Rutland County", "Washington County", "Windham County", "Windsor County"]
+
+
 
 //on page load, start is enabled and quit and guess are disabled
 $(document).ready(function () {
@@ -38,6 +42,7 @@ let vermontCounties = L.geoJson(county_polygons)
 vermontCounties.addTo(map);
 vermontCounties.setStyle({ fillColor: "none" })
 
+
 // Finds a random location within the borderBox
 let boundingBox = {
     maxLon: -73.3654,
@@ -45,12 +50,15 @@ let boundingBox = {
     maxLat: 45.0065,
     minLat: 42.7395
 };
+
 let lonPoint = (boundingBox.maxLon - boundingBox.minLon)
 let latPoint = (boundingBox.maxLat - boundingBox.minLat)
 map.dragging.disable();
 map.doubleClickZoom.disable();
 map.zoomControl.disable();
 map.scrollWheelZoom.disable();
+
+
 
 // when start is clicked, this function is called and guess and quit buttons are enabled and it looks for a random marker in the polygon and sets the zoom view
 function startTheGame() {
@@ -68,6 +76,8 @@ function startTheGame() {
     randomLatPoint = Math.random() * latPoint + boundingBox.minLat
     currentLatPoint = randomLatPoint
     currentLonPoint = randomLonPoint
+
+
     if (isPointInPolygon(randomLonPoint, randomLatPoint) === 1) {
         L.marker([randomLatPoint, randomLonPoint]).addTo(map)
         map.setView([randomLatPoint, randomLonPoint], 18)
@@ -79,7 +89,6 @@ function startTheGame() {
 
     findCountyName()
 }
-
 
 
 let loops = 0;
@@ -96,7 +105,7 @@ function isPointInPolygon(lon, lat) {
 function findCountyName() {
     randomPoint = (randomLatPoint + "," + randomLonPoint)
     //console.log({randomPoint})
-    apiUrl = "https://nominatim.openstreetmap.org/search?q=" + randomPoint + "&format=json"
+    let apiUrl = "https://nominatim.openstreetmap.org/search?q=" + randomPoint + "&format=json"
     //console.log({apiUrl})
     fetch(apiUrl).then(function (response) {
         return response.json()
