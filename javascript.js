@@ -91,12 +91,7 @@ function isPointInPolygon(lon, lat) {
     return results.length;
 }
 
-//upon pressing Ragequit, prints latitude and longitude in info panel
-function iGiveUp() {
-    document.getElementById('latitude').innerHTML = "This is your latitude " + ([randomLatPoint])
-    document.getElementById('longitude').innerHTML = "This is your longitude " + ([randomLonPoint])
-    findCountyName()
-}
+
 
 function findCountyName() {
     randomPoint = (randomLatPoint + "," + randomLonPoint)
@@ -107,7 +102,9 @@ function findCountyName() {
         return response.json()
     }).then(function (myJSON) {
         countyAddress = myJSON[0].display_name
+        console.log(countyAddress)
         return countyAddress;
+
     })
 }
 
@@ -122,69 +119,80 @@ function checkGuess(event) {
         console.log("try again. you lose 10 points.")
     }
     console.log("DONE")
-//TO DO: IF, ENTER WIN STATE. SAVE NAME AND SCORE TO HIGH SCORE LIST. ELSE, KEEP TRYING STATE. UPDATE SCORE.
-
-
-    // for (var i = 0; i < countyNameList.length; i++) {
-    //     if (countyAddress.includes(countyNameList[i])) {
-    //         document.getElementById('county').innerHTML = countyNameList[i]
-    //         correctCounty === countyAddress
-    //         console.log(correctCounty)
-
-    //     } else {
-    //         console.log("NOPE")
-    //     }
-    // }
 }
+    //TO DO: IF, ENTER WIN STATE. SAVE NAME AND SCORE TO HIGH SCORE LIST. ELSE, KEEP TRYING STATE. UPDATE SCORE.
 
-function moveNorth() {
-    currentLatPoint += 0.00050
-    console.log(currentLatPoint)
-    map.setView([currentLatPoint, currentLonPoint], 18)
+    //I'm trying to print the county by calling this function in the html with the quit button 'onclick'
+    //let county of 
+    function printCountyName() {
+        for (let county of countyNameList) {
+            if (countyAddress.includes(county)) {
+                document.getElementById('county').innerHTML = "This is your county " + county
+                //    correctCounty === countyAddress
+                //            console.log(countyNameList[2])
 
-}
+            } else {
+                console.log("NOPE")
+            }
 
-function moveSouth() {
-    currentLatPoint -= 0.00050
-    console.log(currentLatPoint)
-    map.setView([currentLatPoint, currentLonPoint], 18)
-
-}
-
-function moveWest() {
-    currentLonPoint -= 0.00050
-    console.log(currentLonPoint)
-    map.setView([currentLatPoint, currentLonPoint], 18)
-
-}
-
-function moveEast() {
-    currentLonPoint += 0.00050
-    console.log(currentLonPoint)
-    map.setView([currentLatPoint, currentLonPoint], 18)
-
-}
-
-function populateCountyList() {
-    let guessList = document.getElementById("countyList")
-    for (let i = 0; i < countyNameList.length; i++) {
-        // guessList.innerHTML += "<a class='dropdown-item' href='#' onClick='checkGuess(countyAddress,'" + countyNameList[i] + "')'>" + countyNameList[i] + "</a>"
-
-        guessList.innerHTML += `<a class='dropdown-item' href='#'>${countyNameList[i]}</a>`
-        console.log(countyNameList[i])
+        }
     }
-    document.querySelectorAll('#countyList > .dropdown-item').forEach(function (elem) {
-        elem.addEventListener('click', checkGuess)
-    })
-}
+
+
+    //upon pressing Ragequit, prints latitude and longitude in info panel
+    function iGiveUp() {
+        document.getElementById('latitude').innerHTML = "This is your latitude " + ([randomLatPoint])
+        document.getElementById('longitude').innerHTML = "This is your longitude " + ([randomLonPoint])
+        findCountyName()
+    }
+
+    //moves the map North
+    function moveNorth() {
+        currentLatPoint += 0.00050
+        console.log(currentLatPoint)
+        map.setView([currentLatPoint, currentLonPoint], 18)
+
+    }
+
+    //moves the map South
+    function moveSouth() {
+        currentLatPoint -= 0.00050
+        console.log(currentLatPoint)
+        map.setView([currentLatPoint, currentLonPoint], 18)
+
+    }
+
+    //moves the map West
+    function moveWest() {
+        currentLonPoint -= 0.00050
+        console.log(currentLonPoint)
+        map.setView([currentLatPoint, currentLonPoint], 18)
+
+    }
+
+    //moves the map East
+    function moveEast() {
+        currentLonPoint += 0.00050
+        console.log(currentLonPoint)
+        map.setView([currentLatPoint, currentLonPoint], 18)
+
+    }
+
+
+    //populates County List
+    function populateCountyList() {
+        let guessList = document.getElementById("countyList")
+        for (let i = 0; i < countyNameList.length; i++) {
+            // guessList.innerHTML += "<a class='dropdown-item' href='#' onClick='checkGuess(countyAddress,'" + countyNameList[i] + "')'>" + countyNameList[i] + "</a>"
+
+            guessList.innerHTML += `<a class='dropdown-item' href='#'>${countyNameList[i]}</a>`
+            console.log(countyNameList[i])
+        }
+        document.querySelectorAll('#countyList > .dropdown-item').forEach(function (elem) {
+            elem.addEventListener('click', checkGuess)
+        
+        })
+    }
+
 populateCountyList()
 
-
-
-
-
-//let chosenCounty = document.getElementById("dropdownMenuButton")
-    //chosenCounty.innerHTML=onClick
-//function countyMatch() {
-    //if guessList.innerHTML === correctCounty
-//}

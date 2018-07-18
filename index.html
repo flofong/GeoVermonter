@@ -83,7 +83,8 @@
             <div class="actionbuttons">
                 <button id="start" class="btn btn-success" onClick="startTheGame()">Start</button>
                 <button id="guess" type="button" class="btn btn-primary mx-5" data-toggle="modal" data-target="#guessModal"> Guess </button>
-
+                <button id="quit" onClick="iGiveUp(); printCountyName()" class="btn btn-danger ">RAGE QUIT</button>
+            </div>
 
 <div class="modal fade" id="guessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,15 +115,14 @@
 
 
 
-                <button id="quit" onClick="iGiveUp() " class="btn btn-danger ">RAGE QUIT</button>
-            </div>
+            
         </div>
     </div>
     <h1>
         Welcome to GeoVermont!
     </h1>
     <p>
-        A game that tests your knowledge of the land in which you live. Are you good at geography? Do you own a drone and obsessivly
+        A game that tests your knowledge of the land in which you live. Are you good at geography? Do you own a drone and obsessively
         fly it in secret while filming the behavioral patterns of deer? This game is for you. Guess the county you are in!
     </p>
 
