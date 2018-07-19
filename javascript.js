@@ -93,8 +93,6 @@ function startTheGame() {
 
 let loops = 0;
 function isPointInPolygon(lon, lat) {
-    //console.log({ loops })
-    //console.log("checking ", [lon, lat])
     let results = leafletPip.pointInLayer([lon, lat], border);
     loops += 1;
     return results.length;
@@ -122,9 +120,9 @@ function checkGuess(event) {
     let guess = event.target.text
     console.log("IM HERE")
     console.log(guess)
-    // console.log({ value })
     console.log({ countyAddress })
     if (countyAddress.includes(guess)) {
+        // $('.alert').alert()
         console.log("YOU WIN")
     } else {
         console.log("try again. you lose 10 points.")
