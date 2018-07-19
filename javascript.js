@@ -117,10 +117,12 @@ function findCountyName() {
     })
 }
 
+//checks if the user's guess is the same as the randompoint 
 function checkGuess(event) {
     let guess = event.target.text
     console.log("IM HERE")
-    console.log({ value })
+    console.log(guess)
+    // console.log({ value })
     console.log({ countyAddress })
     if (countyAddress.includes(guess)) {
         console.log("YOU WIN")
@@ -131,14 +133,11 @@ function checkGuess(event) {
 }
     //TO DO: IF, ENTER WIN STATE. SAVE NAME AND SCORE TO HIGH SCORE LIST. ELSE, KEEP TRYING STATE. UPDATE SCORE.
 
-    //I'm trying to print the county by calling this function in the html with the quit button 'onclick'
-    //let county of 
+    //This function prints the county name in the info panel upon pressing RageQuit button
     function printCountyName() {
         for (let county of countyNameList) {
             if (countyAddress.includes(county)) {
                 document.getElementById('county').innerHTML = "This is your county " + county
-                //    correctCounty === countyAddress
-                //            console.log(countyNameList[2])
 
             } else {
                 console.log("NOPE")
@@ -146,7 +145,6 @@ function checkGuess(event) {
 
         }
     }
-
 
     //upon pressing Ragequit, prints latitude and longitude in info panel
     function iGiveUp() {
