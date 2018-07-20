@@ -115,19 +115,33 @@ function findCountyName() {
     })
 }
 
+
+
 //checks if the user's guess is the same as the randompoint 
 function checkGuess(event) {
     let guess = event.target.text
-    console.log("IM HERE")
     console.log(guess)
+    replaceDropdownName()
     console.log({ countyAddress })
     if (countyAddress.includes(guess)) {
-        // $('.alert').alert()
         console.log("YOU WIN")
+        alert("You win!")
+       
     } else {
         console.log("try again. you lose 10 points.")
     }
     console.log("DONE")
+}
+
+//WIP replaces the modal dropdown text (choose county) with the user's chosen county from the dropdown.????
+function replaceDropdownName(){
+    $(".modal-title").click(function(){
+        $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+        $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+      });
+    // let string = '#guessModalLabel'    
+    // let newString = string.replace('#guessModalLabel', guess)
+    
 }
     //TO DO: IF, ENTER WIN STATE. SAVE NAME AND SCORE TO HIGH SCORE LIST. ELSE, KEEP TRYING STATE. UPDATE SCORE.
 
