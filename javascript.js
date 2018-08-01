@@ -123,14 +123,14 @@ function checkGuess(event) {
     console.log(guess)
     replaceDropdownName(guess)
     console.log({ countyAddress })
-    if (countyAddress.includes(guess)) {
-        document.getElementById('guessModalLabel').innerHTML = 'You Win!!'
-        console.log("YOU WIN")
-      
-       
-    } else {
-        console.log("try again. you lose 10 points.")
+    if (!countyAddress.includes(guess)) {
+        document.getElementById('guessModalLabel').innerHTML = 'Wrong Answer, Try Again.'
+    }if (countyAddress.includes(guess)) {
+            document.getElementById('guessModalLabel').innerHTML = 'You Win!'
+            printCountyName()
+            iGiveUp()
     }
+    
     console.log("DONE")
 }
 
@@ -146,7 +146,7 @@ function replaceDropdownName(county){
     function printCountyName() {
         for (let county of countyNameList) {
             if (countyAddress.includes(county)) {
-                document.getElementById('county').innerHTML = "This is your county " + county
+                document.getElementById('county').innerHTML = "You are in " + county
 
             } else {
                 console.log("NOPE")
