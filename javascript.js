@@ -123,25 +123,24 @@ function checkGuess(event) {
     console.log(guess)
     replaceDropdownName(guess)
     console.log({ countyAddress })
+    //if the guess is not correct
     if (!countyAddress.includes(guess)) {
         document.getElementById('guessModalLabel').innerHTML = 'Wrong Answer, Try Again.'
+    //if the guess is correct. also prints county, lat and long
     }if (countyAddress.includes(guess)) {
             document.getElementById('guessModalLabel').innerHTML = 'You Win!'
             printCountyName()
             iGiveUp()
+              //TO DO: IF TRUE, ENTER WIN STATE. SAVE NAME AND SCORE TO HIGH SCORE LIST. ELSE, KEEP TRYING STATE. UPDATE SCORE.
     }
     
     console.log("DONE")
 }
 
-//WIP replaces the guessmodaldropdown text (choose county) with the user's chosen county from the dropdown.
+//replaces the guessmodaldropdown text (choose county) with the user's chosen county from the dropdown.
 function replaceDropdownName(county){
-    document.getElementById('dropdownMenuButton').innerHTML = county
-    
-    
+    document.getElementById('dropdownMenuButton').innerHTML = county 
 }
-    //TO DO: IF, ENTER WIN STATE. SAVE NAME AND SCORE TO HIGH SCORE LIST. ELSE, KEEP TRYING STATE. UPDATE SCORE.
-
     //This function prints the county name in the info panel upon pressing RageQuit button
     function printCountyName() {
         for (let county of countyNameList) {
