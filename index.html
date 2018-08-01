@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
@@ -21,8 +20,6 @@
     <script src="county_polygons.js"></script>
     <link rel="icon" type="image/png" href="favicon.png">
 
-
-
 </head>
 
 <body>
@@ -32,7 +29,7 @@
         <div class="row">
             <nav class="d-flex justify-content-around align-items-center fixed-top navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">
-                    About
+                    How to Play
                 </a>
                 <span class="mb-0 h1">
                     <img src="binoculars_3.svg" width="40" height="40"> GeoVermont
@@ -47,7 +44,6 @@
 
     <!-- MAP -->
     <div class="mapcontainer">
-
         <div class="jumbotron" style="height:500px;" id="map" map="map">
             <div class="col-sm-12 zrow">
                 <div id="north">
@@ -62,7 +58,6 @@
                     <a id="eastArrow">
                         <img onClick="moveEast()" style="cursor:pointer" src="eastArrow.png" width="50px" height="50px">
                     </a>
-
                 </div>
 
                 <div id="south">
@@ -75,19 +70,18 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- RIGHT DIV -->
+    <!-- MAIN GAME BUTTONS -->
     <div class="row text-center">
         <div class="col-sm-12">
             <div class="actionbuttons">
                 <button id="start" class="btn btn-success" onClick="startTheGame()">Start</button>
                 <button id="guess" type="button" class="btn btn-primary mx-5" data-toggle="modal" data-target="#guessModal"> Guess </button>
-                <button id="quit" onClick="iGiveUp(); printCountyName()" class="btn btn-danger ">RAGE QUIT</button>
+                <button id="quit" onClick="iGiveUp(); printCountyName()" class="btn btn-danger ">Quit</button>
             </div>
 
-    <!-- MODAL -->
+            <!-- MODAL -->
             <div class="modal fade" id="guessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -104,8 +98,6 @@
                                     Choose a county
                                 </button>
                                 <div id="countyList" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <!-- <a class="dropdown-item" href="#">Action</a> -->
-
                                 </div>
                             </div>
                         </div>
@@ -116,45 +108,20 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
-    <h1>
-        Welcome to GeoVermont!
-    </h1>
-    <p>
-        A game that tests your knowledge of the land in which you live. Are you good at geography? Do you own a drone and obsessively
-        fly it in secret while filming the behavioral patterns of deer? This game is for you. Guess the county you are in!
-    </p>
-
-
-
 
     <br>
 
-
-
-
+    <!--LAT LONG COUNTY INFO BOX -->
     <div id="info ">
         <p id="latitude">Latitude</p>
         <p id="longitude">Longitude</p>
         <p id="county">County</p>
         <p id="printLatLon"></p>
     </div>
-
-    <div class="score ">
-        <p>Score Box</p>
-    </div>
-
-
-
-
-
     </div>
     </div>
-
 
 </body>
 

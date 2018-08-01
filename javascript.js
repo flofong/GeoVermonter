@@ -17,7 +17,7 @@ let correctCounty
 const countyNameList = ["Addison County", "Bennington County", "Caledonia County", "Chittenden County", "Essex County", "Franklin County", "Grand Isle County", "Lamoille County", "Orange County", "Orleans County", "Rutland County", "Washington County", "Windham County", "Windsor County"]
 
 
-
+//make this into a function-initialize??
 //on page load, start is enabled and quit and guess are disabled
 $(document).ready(function () {
     $("#quit").prop("disabled", true);
